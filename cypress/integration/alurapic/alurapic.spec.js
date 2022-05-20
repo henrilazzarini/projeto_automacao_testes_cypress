@@ -45,19 +45,15 @@ describe('Login e registro de usuários alura pic', () => {
         cy.contains('ap-vmessage', 'Mininum length is 8').should('be.visible');        
     })
     
-    it('fazer login de usuário válido', () => {
-        cy.get('input[formcontrolname="userName"]').type('flavio');
-        cy.get('input[formcontrolname="password"]').type('123');
-        cy.get('button[type="submit"]').click();
+    it.only('fazer login de usuário válido', () => {
+        cy.login('flavio', '123');
         cy.contains('a', '(Logout)').should('be.visible');
     })
 
-    it('fazer login de usuário inválido', () => {
-        cy.get('input[formcontrolname="userName"]').type('henrique');
-        cy.get('input[formcontrolname="password"]').type('1234');
-        cy.get('button[type="submit"]').click();
+    it.only('fazer login de usuário inválido', () => {
+        cy.login('henrique', '1234');
         cy.on('window:alert', (str) => {
-            expect(str).to.equal('Invalid user name or password')
+        expect(str).to.equal('Invalid user name or password')
         })
     })
 
