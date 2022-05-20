@@ -45,5 +45,6 @@ describe('Login e registro de usuários alura pic', () => {
         cy.contains('ap-vmessage', 'Mininum length is 8').should('be.visible');        
     })
     
+    //comentário
 
 } )
